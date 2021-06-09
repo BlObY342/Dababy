@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<link rel = "stylesheet" href = "conv_calc.css">
+</head>
+<body class = "the-body-yes">
+
+<div class = "the-center-legend-yes">
+  <h1 class = "the-title-yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Currency Converter &nbsp;&nbsp;&nbsp;&nbsp;</h3>
+    <form name = "form1">
+    
+      <div class = "hold">
+        <select id="foreign-rate-1" class = "select-item">
+          <option disabled selected value="select">Select currency</option>
+          <option id = "AFN">AFN</option>
+          <option id = "AMD">AMD</option>
+          <option id = "ARS">ARS</option>
+          <option id = "AUD">AUD</option>
+          <option id = "AWG">AWG</option>
+          <option id = "AZN">AZN</option>
+          <option id = "BBD">BBD</option>
+          <option id = "BHD">BHD</option>
+          <option id = "BSD">BSD</option>
+          <option id = "BYR">BYR</option>
+          <option id = "CAD">CAD</option>
+          <option id = "CHF">CHF</option>
+          <option id = "DZD">DZD</option>
+          <option id = "EUR">EUR</option>
+          <option id = "GBP">GBP</option>
+          <option id = "JPY">JPY</option>
+          <option id = "KES">KES</option>
+          <option id = "PAB">PAB</option>
+          <option id = "THB">THB</option>
+          <option id = "USD">USD</option>
+        </select>
+      
+        <br>
+      
+        <input type="number" id="foreign-amount" class = "inputs" name = "foreign-amount" min = "0" oninput="validity.valid||(value='');" placeholder="Enter amount" />
+        <br>
+    
+        <button type = "button" class = "the-button-yes" onclick = "calculateAnswer()"><bold>CONVERT</bold></button>
+        <br>
+      
+        <select id="foreign-rate-2" class = "select-item">
+          <option disabled selected value="select">Select currency</option>
+          <option id = "AFN">AFN</option>
+          <option id = "AMD">AMD</option>
+          <option id = "ARS">ARS</option>
+          <option id = "AUD">AUD</option>
+          <option id = "AWG">AWG</option>
+          <option id = "AZN">AZN</option>
+          <option id = "BBD">BBD</option>
+          <option id = "BHD">BHD</option>
+          <option id = "BSD">BSD</option>
+          <option id = "BYR">BYR</option>
+          <option id = "CAD">CAD</option>
+          <option id = "CHF">CHF</option>
+          <option id = "DZD">DZD</option>
+          <option id = "EUR">EUR</option>
+          <option id = "GBP">GBP</option>
+          <option id = "JPY">JPY</option>
+          <option id = "KES">KES</option>
+          <option id = "PAB">PAB</option>
+          <option id = "THB">THB</option>
+          <option id = "USD">USD</option>
+        </select>
+      
+        <br>
+      
+        <input type="text" id="foreign-ugx" class = "inputs" name = "foreign-ugx" readonly placeholder="Result" />
+      </div>
+      
+    </form>
+    <script>
+      let toBeConverted;
+    
+      const convFactor = {
+        AFN: 78.83,
+        AMD: 520.67,
+        ARS: 94.77,
+        AUD: 1.29,
+        AWG: 1.80,
+        AZN: 1.70,
+        BBD: 2.02,
+        BHD: 0.38,
+        BSD: 1.00,
+        BYR: 2.54,
+        CAD: 1.21,
+        CHF: 0.90,
+        DZD: 133.37,
+        EUR: 0.82,
+        GBP: 0.71,
+        JPY: 109.69,
+        KES: 107.70,
+        PAB: 1.00,
+        THB: 31.14,
+        USD: 1,
+      };
+    
+      function calculateAnswer() {
+        toBeConverted = document.forms["form1"]["foreign-amount"].value; // this is definitely react.js i agree
+        convertedFrom = document.forms["form1"]["foreign-rate-1"].value;
+        convertedTo = document.forms["form1"]["foreign-rate-2"].value;
+    
+        for (var key1 in convFactor) {
+          var value1 = convFactor[key1];
+          if (key1 == convertedFrom) {
+            y1 = value1;
+            for (var key2 in convFactor) {
+              var value2 = convFactor[key2];
+              if (key2 == convertedTo) {
+                y2 = value2;
+                document.forms["form1"]["foreign-ugx"].value = toBeConverted / y1 * y2;
+              }
+            }
+          }
+        }
+    
+      } 
+    </script>
+    </body>
+    </html>
+</div>
